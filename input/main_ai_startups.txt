@@ -1,0 +1,311 @@
+Capio.ai
+Clover Intelligence
+Expect Labs
+Gridspace
+Mobvoi
+Nexidia
+Pop Up Archive
+Quirious
+TalkIQ
+Twilio
+Alation
+Arimo
+Cycorp
+Digital Reasoning
+IBM Watson Kyndi
+Outlier
+Palantir
+Primer
+Sapho
+Bottlenose
+CB Insights
+DataFox
+Enigma
+Mattermark
+Predata
+Premise
+Quid
+Tracxn
+Alluvium
+C3 IoT
+GE Predix
+Imubit
+KONUX
+Maana
+Planet OS
+Preferred Networks
+Sentenai
+ThingWorx
+Uptake
+Algocian
+Captricity
+Clarifai
+Cortica
+Deepomatic
+DeepVision
+Netra
+Orbital Insight
+Planet
+Spaceknow
+ActionIQ
+Clarabridge
+DigitalGenius
+Eloquent Labs
+Kasisto
+Preact
+Wise.io
+Zendesk
+AirPR
+BrightFunnel
+CogniCor
+Lattice
+LiftIgniter
+Mintigo
+msg.ai
+Persado
+Radius
+Retention Science
+Entelo
+Gigster
+HiQ
+HireVue
+SpringRole
+Textio
+Unitive
+Wade & Wendy
+6sense
+AppZen
+Aviso
+Clari
+Collective[i]
+Fusemachines
+InsideSales
+Salesforce
+Einstein
+Zensight
+Cylance
+Darktrace
+Deep Instinct
+Demisto
+Drawbridge Networks
+Graphistry
+LeapYear
+SentinelOne
+SignalSense
+Zimperium
+Airware
+DJI
+DroneDeploy
+Lily
+Pilot AI Labs
+Shield AI
+Skycatch
+Skydio
+AdasWorks
+Auro Robotics
+comma.ai
+Drive.ai
+Google
+Mobileye
+nuTonomy
+Tesla
+Uber
+Zoox
+Clearpath Robotics
+Fetch Robotics
+Harvest Automation
+Jaybridge Robotics
+Kindred
+Osaro
+Rethink Robotics
+Amazon Alexa
+Apple Siri
+Google Now/Allo
+Facebook M
+Microsoft Cortana
+Replika
+Alien Labs
+Butter.ai
+Clara
+SkipFlag
+Slack
+Sudo
+Talla
+x.ai
+Zoom.ai
+Abundant Robotics
+AgriData
+Blue River Technology
+Descartes Labs
+Mavrx
+Pivot Bio
+TerrAvion
+Trace Genomics
+Tule
+UDIO
+AltSchool
+Content Technologies (CTI)
+Coursera
+Gradescope
+Knewton
+Volley
+AlphaSense
+Bloomberg
+Cerebellum Capital
+Dataminr
+iSentium
+Kensho
+Quandl
+Sentient
+Beagle
+Blue J Legal
+Everlaw
+Legal Robot
+Ravel Law
+ROSS Intelligence
+Seal
+Calculario
+Citrine Informatics
+Eigen Innovations
+Ginkgo Bioworks
+Sight Machine
+Zymergen
+Affirm
+Betterment
+Earnest
+Lendo
+Mirador
+Tala (fka InVenture)
+Wealthfront
+ZestFinance
+Acerta
+ClearMetal
+Marble
+NAUTO
+PitStop
+Preteckt
+Routific
+Atomwise
+Color Genomics
+Deep Genomics
+Grail
+iCarbonX
+Luminist
+Numerate
+Recursion Pharmaceuticals
+Verily
+Whole Biome
+CareSkore
+Deep6 Analytics
+IBM Watson Health
+Oncora Medical
+pulseData
+Sentrian
+Zephyr Health
+3Scan
+Arterys
+Bay Labs
+Butterfly Network
+Enlitic
+Google DeepMind
+Imagia
+Automat
+OpenAI Gym
+Facebook CommAI
+KITT.AI
+Semantic Machines
+Howdy
+Maluuba
+Octane AI
+Ayasdi
+BigML
+Dataiku
+DataRobot
+Domino Data Lab
+Kaggle
+RapidMiner
+Seldon
+SparkBeyond
+Yhat
+Yseop
+Bonsai
+CognitiveScale
+Context Relevant
+Datacratic
+deepsense.io
+Geometric Intelligence
+H2O.ai
+HyperScience
+Loop AI Labs
+minds.ai
+Nara Logics
+Reactive
+Scaled Inference
+Skymind
+SparkCognition
+Agolo
+AYLIEN
+Cortical.io
+Lexalytics
+Luminoso
+MonkeyLearn
+Narrative Science
+spaCy
+AnOdot
+Fuzzy.ai
+Hyperopt
+Kite
+Layer 6 AI
+Lobe.ai
+Rainforest
+SigOpt
+SignifAI
+Amazon Mechanical Turk
+CrowdAI
+CrowdFlower
+Datalogue
+DataSift
+Diffbot*
+Import.io
+Paxata
+Trifacta
+WorkFusion
+Amazon DSSTNE
+Apache Spark Mllib
+Baidu Paddle Paddle
+Caffe
+Chainer
+DeepLearning4j
+Keras
+Microsoft Azure ML
+Microsoft CNTK
+Microsoft DMTK
+MXNet
+Nervana Neon
+scikit-learn
+TensorFlow
+Theano
+Torch7
+Weka
+1026 Labs
+Cadence Tensilica
+Cirrascale
+Google TPU
+KNUPATH
+Intel (Nervana)
+Isocline
+NVIDIA DGX-1/Titan X
+Qualcomm
+Tenstorrent
+Cogitai
+Kimera
+Knoggin
+NNAISENSE
+Numenta
+OpenAI
+Vicarious
+Nicira
+Open.ai
+Prisma
+People.ai
+MSQRD

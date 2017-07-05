@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="pp_actions.js"></script>
+        <link rel="stylesheet" type="text/css" href="pp_style.css">
+
+        <title>Bowling</title>
+    </head>
+
+    <body>
+        <h3>TASKS</h3>
+        <div id="g1" class="group">
+            <h3 class="groupTitle">Google</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="googleSearchTasks">search for data</button></li>
+            </ul>
+        </div>
+
+        <div id="g2" class="group">
+            <h3 class="groupTitle">Telegram Channels</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="scrapeTchannelsChannels">tchannels.me</button></li>
+                <li><button class="action" taskName="scrapeTlgrmChannels">tlgrm.ru</button></li>
+                <li><button class="action" taskName="scrapeTsearchChannelsList">tsear.ch list</button></li>
+            </ul>
+        </div>
+
+        <div id="g10" class="group">
+            <h3 class="groupTitle">Telegram Client</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="fungusBot">fungus bot</button></li>
+                <li><button class="action" taskName="sashaBotReadChannelsFromInterface">read channels by id (week)</button></li>
+                <li><button class="action" taskName="sashaBotReadChannelsFromNavBar">read channels by link (week) </button></li>
+                <li><button class="action" taskName="sashaBotReadChannelsFromInterfaceInf">read channels by id (inf.) </button></li>
+                <li><button class="action" taskName="sashaBotReadChannelsFromNavBarInf">read channels by link (inf.) </button></li>
+            </ul>
+        </div>
+
+        --------------------------------
+
+        <h3>MEMORY</h3>
+        <button class="action" taskName="clearCache">Clear cache</button>&nbsp&nbsp</label><input type="checkbox" class="scraperParameter" id="cachePersistence"/>Lock cache</label>
+        <div id="cacheSize"></div>
+
+        --------------------------------
+
+        <h3>INPUT</h3>
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="searchTasks">Upload search tasks</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="searchTasks">R</button>
+        <div id="searchTasksVaultSize"></div>
+
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="links">Upload links</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="links">R</button><br>
+        <div id="linksVaultSize"></div>
+        --------------------------------
+
+        <h3>EXPORT</h3>
+        <button id="export">View results in CSV-like format</button>
+        <br>
+        --------------------------------
+
+        <h3>RUN-TIME CONTROL</h3>
+        <label><input type="checkbox" class="scraperParameter"  id="incognitoMode"/>Run in incognito</label>
+        <button class="action" controllerCommand="resetVault" dataType="workers">Shut all workers</button><br>
+        --------------------------------
+
+        <h3>UTILITIES</h3>
+        <label><input type="checkbox" class="scraperParameter" id="investigationStatus"/>Investigate page</label>
+        <label><input type="checkbox" class="scraperParameter" id="inventSelectorStatus"/>Guess selector</label>
+    </body>
+</html>

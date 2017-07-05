@@ -1,0 +1,81 @@
+{
+    "manifest_version": 2,
+    "name": "Bowling - Telegram edition",
+    "version": "5.1",
+    "description": "Crawl web catalogues, dive into channels, and all that via web client",
+
+    "background": {
+        "scripts": [
+            "/utilities/date.format.js",
+            "bg_tasks_logic.js",
+            "bg_controller.js",
+            "bg_controller_utils.js",
+            "bg_cache.js",
+            "bg_tasks_archive.js",
+            "bg_tasks_logic.js",
+            "bg_telegram_notifications.js"
+        ],
+        "persistent" : false
+    },
+
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*",
+            "file://*/*"
+        ],
+        "js": [
+            "/utilities/date.format.js",
+            "/utilities/time.js",
+            "/utilities/js_extension.js",
+            "/utilities/telegram.js",
+            "/utilities/fungus_songs.js",
+            "/utilities/typing.js",
+            "/thirdparty/jquery-3.1.1.min.js",
+            "/utilities/jquery_extension.js",
+            "investigate_logic.js",
+            "cs_living_fungus.js",
+            "cs_living_sasha.js",
+            "cs_scraping.js",
+            "cs_scraping_loop.js",
+            "cs_navigation.js",
+            "cs_extraction.js",
+            "cs_uploading.js"
+        ],
+        "css": [
+            "investigate_style.css"
+        ],
+        "all_frames": true,
+        "run_at": "document_start"
+    }],
+
+    "web_accessible_resources": [
+        "inj_input.js",
+        "/thirdparty/jquery-3.1.1.min.js"
+    ],
+
+    "permissions": [
+        "management",
+        "browsingData",
+        "background",
+        "tabs",
+        "activeTab",
+        "tabCapture",
+        "webNavigation",
+        "storage",
+        "unlimitedStorage",
+        "alarms",
+        "https://api.telegram.org/*"
+    ],
+
+    "browser_action": {
+        "default_popup": "pp.html",
+        "default_icon": "pp_icon.png"
+    },
+
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
+}
