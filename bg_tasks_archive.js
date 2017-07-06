@@ -63,67 +63,83 @@ function tasksManager(taskName) {
 
         case "sashaBotReadChannelsFromInterface":
             bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im"});
-            //wait until stuff gets loaded
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1500}});
-            //type the channel id
+            //1. type the channel id
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "input.im_dialogs_search_field"}});
             bufferTask.addSubtask({purpose: "navigation", action: "setInputValue", description: {selector: "input.im_dialogs_search_field", inputApproach: "injectedScript"}});
-            //check there is no error
+            //2. check there is no error
             //bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
-            //check the channel is found, if yes - select it
+            //3. check the channel is found, if yes - select it
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first span.im_dialog_message_text"}});
             bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first span.im_dialog_message_text", containsSource: "searchTasks"}});
             bufferTask.addSubtask({purpose: "navigation", action: "click", description: {selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first > a.im_dialog", jQueryStyle: false, mouseEvent: "mousedown"}});
-            //wait until client switches to that channel
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1500}});
-            //check it is channel, channel has members there
+            //4. wait until client switches to that channel
+            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 250}});
+            //5. check it is channel, channel has members there
             bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_head_peer_title_wrap span.tg_head_peer_status span:first", containsText: "member"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "count", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message", total: 1}});
-            //scroll to bottom (you might find yourself in the middle of chat)
-            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: 100, period: 20, selector: "", checkLimit: 50}});
-            //start scrolling the history up to load more and more messages
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message"}});
+            //6. scroll to bottom (you might find yourself in the middle of chat)
+            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: 100, period: 40, selector: "", checkLimit: 50}});
+            //7. start scrolling the history up to load more and more messages
             bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -200, period: 20, selector: "", checkLimit: 50, showStopper: "telegramChannel"}});
-            //save comprehensive statistics about messages history
+            //8. save comprehensive statistics about messages history
             bufferTask.addSubtask({purpose: "scraping", action: "save", description: {partOfPageId: "fullContent"}});
             break;
 
         case "sashaBotReadChannelsFromInterfaceInf":
-            bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im", forceNewWindowForNewTask: true, freezeLimit: 300000}); //5 minutes is maximum for freeze
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1500}});
+            bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im", forceNewWindowForNewTask: false, freezeLimit: 300000}); //5 minutes is maximum for freeze
+            //0. wait until page gets loaded
+            //bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.tg_page_head"}});
+            //bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_page_head", containsText: "Connecting"}});
+            //bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_page_head", containsText: "Connecting", inverseCheckLogic: true}});
+            //1. type the channel id
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "input.im_dialogs_search_field"}});
             bufferTask.addSubtask({purpose: "navigation", action: "setInputValue", description: {selector: "input.im_dialogs_search_field", inputApproach: "injectedScript"}});
+            //2. check there is no error
             //bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {property: "content", selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first span.im_dialog_message_text", containsSource: "searchTasks"}});
+            //3. check the channel is found, if yes - select it
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first span.im_dialog_message_text"}});
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first span.im_dialog_message_text", containsSource: "searchTasks"}});
             bufferTask.addSubtask({purpose: "navigation", action: "click", description: {selector: "div.im_dialogs_contacts_wrap:not('.ng-hide') ul > li:first > a.im_dialog", jQueryStyle: false, mouseEvent: "mousedown"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 5000}});
+            //4. wait until client switches to that channel
+            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 250}});
+            //5. check it is channel, channel has members there
             bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_head_peer_title_wrap span.tg_head_peer_status span:first", containsText: "member"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "count", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message", total: 1}});
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message"}});
+            //6. scroll up jumping over all the new messages
             bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEndCustom", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -1000000, period: 1000, selector: "", checkLimit: 300, showStopper: "telegramChannelFull"}});
+            //7. save comprehensive statistics about messages history
             bufferTask.addSubtask({purpose: "scraping", action: "save", description: {partOfPageId: "channelBirthday"}});
             break;
 
         case "sashaBotReadChannelsFromNavBar":
             bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im", targetPages: "vaultPages", pageUrlPrefix: "https://web.telegram.org/#/im?p="});
-            //wait until stuff gets loaded
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1500}});
-            //check there is no error window
-            bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
-            //check it's group or channel, skip bots
+            //1. check there is no error
+            //bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
+            //2. wait until client switches to that channel
+            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 250}});
+            //3. check it is channel, channel has members there
             bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_head_peer_title_wrap span.tg_head_peer_status span:first", containsText: "member"}});
-            //check there is at least one message (service or whatever)
-            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "count", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message", total: 1}});
-            //scroll to bottom (you might find yourself in the middle of chat)
-            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: 100, period: 20, selector: "", checkLimit: 50}});
-            //start scrolling the history up to load more and more messages
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message"}});
+            //4. scroll to bottom (you might find yourself in the middle of chat)
+            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: 100, period: 40, selector: "", checkLimit: 50}});
+            //5. start scrolling the history up to load more and more messages
             bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -200, period: 20, selector: "", checkLimit: 50, showStopper: "telegramChannel"}});
-            //save comprehensive statistics about messages history
+            //6. save comprehensive statistics about messages history
             bufferTask.addSubtask({purpose: "scraping", action: "save", description: {partOfPageId: "fullContent"}});
             break;
 
         case "sashaBotReadChannelsFromNavBarInf":
-            bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im", forceNewWindowForNewTask: true, freezeLimit: 300000, targetPages: "vaultPages", pageUrlPrefix: "https://web.telegram.org/#/im?p="});
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1500}});
-            bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
+            bufferTask = new Task({taskName: taskName, rootPageHost: "web.telegram.org", rootPageSubref: "/#/im", forceNewWindowForNewTask: false, freezeLimit: 300000, targetPages: "vaultPages", pageUrlPrefix: "https://web.telegram.org/#/im?p="});
+            //1. check there is no error
+            //bufferTask.addSubtask({purpose: "navigation", action: "check", errorHandling: "superhard", description: {duration: 3000, property: "presence", selector: "div.error_modal_wrap", happenMode: "bad"}});
+            //2. wait until client switches to that channel
+            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 250}});
+            //3. check it is channel, channel has members there
             bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "content", selector: "div.tg_head_peer_title_wrap span.tg_head_peer_status span:first", containsText: "member"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "count", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message", total: 1}});
+            bufferTask.addSubtask({purpose: "navigation", action: "check", description: {duration: 10000, property: "presence", selector: "div.im_history_messages_peer:not('.ng-hide') div.im_history_message_wrap, div.im_history_messages_peer:not('.ng-hide') div.im_service_message"}});
+            //4. scroll up jumping over all the new messages
             bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEndCustom", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -1000000, period: 1000, selector: "", checkLimit: 300, showStopper: "telegramChannelFull"}});
+            //5. save comprehensive statistics about messages history
             bufferTask.addSubtask({purpose: "scraping", action: "save", description: {partOfPageId: "channelBirthday"}});
             break;
 

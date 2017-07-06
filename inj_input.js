@@ -29,7 +29,7 @@ function setInputValueCsInj(evtIn) {
     var $e = angular.element(e);
     $e.triggerHandler('input');
 
-    //check the status
+    //check the status - if you did no mistake, in 80% cases spend no more than 400 ms on typing
     if (String($(selector).val()) === String(textToTypeClean.substring(0, $(selector).val().length))) {
         if ($(selector).val().length === textToTypeClean.length) {
             evtName = "setInputValueInjCs";
@@ -41,9 +41,11 @@ function setInputValueCsInj(evtIn) {
             typingDirection = "forward";
 
             if (Math.random() <= 0.8) {
-                delay = Math.max(Math.random() * 400, 100)
+                //original: delay = Math.max(Math.random() * 400, 100)
+                delay = Math.max(Math.random() * 200, 50)
             } else {
-                delay = Math.max(Math.random() * 1200, 400)
+                //original: delay = Math.max(Math.random() * 1200, 400)
+                delay = Math.max(Math.random() * 600, 200)
             }
         }
     } else {
@@ -53,9 +55,11 @@ function setInputValueCsInj(evtIn) {
         textToType = evtIn.detail.textToTypeClean;
 
         if (Math.random() <= 0.85) {
-            delay = Math.max(Math.random() * 700, 200)
+            //original: delay = Math.max(Math.random() * 700, 200)
+            delay = Math.max(Math.random() * 350, 100)
         } else {
-            delay = Math.max(Math.random() * 1200, 700)
+            //original: delay = Math.max(Math.random() * 1200, 700)
+            delay = Math.max(Math.random() * 600, 350)
         }
     }
 
