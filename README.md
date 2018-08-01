@@ -1,6 +1,6 @@
 ### What is ntScraper? ###
 
-**ntReport** is a web scraping framework in form of Chrome Extension, which can run 10+ scraping tasks in separate windows asynchronously.
+**ntScraper** is a web scraping framework in form of Chrome Extension, which can run 10+ scraping tasks in separate windows asynchronously.
 
 ---
 
