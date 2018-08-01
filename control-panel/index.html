@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="/control-panel/cp.js"></script>
-        <link rel="stylesheet" type="text/css" href="/control-panel/cp.css">
+        <script src="/control-panel/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="/control-panel/style.css">
 
         <title>ntScraper</title>
     </head>
@@ -28,38 +28,38 @@
         <div id="g10" class="group">
             <h3 class="groupTitle">Telegram Web Client</h3>
             <ul class="groupButtons">
-                <li><button class="action" taskName="scrapeTelegramChannels">Load posts since last week</button></li>
+                <li><button class="action" taskName="scrapeTelegramChannels">Load all posts</button></li>
             </ul>
         </div>
 
         --------------------------------
 
-        <h3>MEMORY</h3>
-        <button class="action" taskName="clearCache">Clear cache</button>&nbsp&nbsp</label><input type="checkbox" class="scraperParameter" id="cachePersistence"/>Lock cache</label>
+        <h3>CACHE</h3>
+        <button class="action" taskName="clearCache">Clear cache</button>&nbsp&nbsp</label><input type="checkbox" class="scraperParameter" id="cachePersistence"/>Lock</label>
         <div id="cacheSize"></div>
 
         --------------------------------
 
-        <h3>INPUT</h3>
-        <button class="action" controllerCommand="uploadFromWebpage" dataType="searchTasks">Upload search tasks</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="searchTasks">R</button>
+        <h3>IMPORT</h3>
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="searchTasks">Import text</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="searchTasks">R</button>
         <div id="searchTasksVaultSize"></div>
 
-        <button class="action" controllerCommand="uploadFromWebpage" dataType="links">Upload links</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="links">R</button><br>
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="links">Import URLs</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="links">R</button><br>
         <div id="linksVaultSize"></div>
         --------------------------------
 
         <h3>EXPORT</h3>
-        <button id="export">View results in CSV-like format</button>
+        <button id="export">Go to Export page</button>
         <br>
         --------------------------------
 
-        <h3>RUN-TIME CONTROL</h3>
+        <h3>RUN-TIME</h3>
         <label><input type="checkbox" class="scraperParameter"  id="incognitoMode"/>Run in incognito</label>
         <button class="action" controllerCommand="resetVault" dataType="workers">Shut all workers</button><br>
         --------------------------------
 
         <h3>UTILITIES</h3>
         <label><input type="checkbox" class="scraperParameter" id="investigationStatus"/>Investigate page</label>
-        <label><input type="checkbox" class="scraperParameter" id="inventSelectorStatus"/>Guess selector</label>
+        <label><input type="checkbox" class="scraperParameter" id="inventSelectorStatus"/>"Guess" regime</label>
     </body>
 </html>

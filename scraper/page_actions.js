@@ -1,5 +1,5 @@
 var s = document.createElement('script');
-s.src = chrome.extension.getURL('/scraper/s_inj.js');
+s.src = chrome.extension.getURL('/scraper/type_injected.js');
 s.onload = function() {
     s.remove();
 };

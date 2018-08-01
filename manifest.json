@@ -7,11 +7,11 @@
     "background": {
         "scripts": [
             "/third-party/date.format.js",
-            "/tasks/t_defaults.js",
-            "/tasks/t_tasks.js",
-            "/controller/c_brain.js",
-            "/controller/c_brain_utils.js",
-            "/controller/c_cache.js",
+            "/tasks/defaults.js",
+            "/tasks/tasks.js",
+            "/controller/main_loop.js",
+            "/controller/utilities.js",
+            "/controller/cache.js",
             "/misc/telegram_notifications.js"
         ],
         "persistent" : false
@@ -34,24 +34,24 @@
             "/scripts/scrapeTelegramChannels.js",
             "/scripts/scrapeTsearch.js",
             "/scripts/scrapeTlgrm.js",
-            "/selector-tools/st.js",
-            "/selector-tools/st_inj.js",
-            "/scraper/s_actions.js",
-            "/scraper/s_inj.js",
-            "/scraper/s_loop_events.js",
-            "/scraper/s_main_loop.js",
-            "/import/i.js"
+            "/selector-tools/script.js",
+            "/selector-tools/copy_injected.js",
+            "/scraper/page_actions.js",
+            "/scraper/type_injected.js",
+            "/scraper/loop_events.js",
+            "/scraper/main_loop.js",
+            "/import/script.js"
         ],
         "css": [
-            "/selector-tools/st.css"
+            "/selector-tools/style.css"
         ],
         "all_frames": true,
         "run_at": "document_start"
     }],
 
     "web_accessible_resources": [
-        "/selector-tools/st_inj.js",
-        "/scraper/s_inj.js",
+        "/selector-tools/copy_injected.js",
+        "/scraper/type_injected.js",
         "/third-party/jquery-3.1.1.min.js"
     ],
 
@@ -70,13 +70,13 @@
     ],
 
     "browser_action": {
-        "default_popup": "/control-panel/cp.html",
-        "default_icon": "/control-panel/icons/icon.png"
+        "default_popup": "/control-panel/index.html",
+        "default_icon": "/icons/icon.png"
     },
 
     "icons": {
-        "16": "/control-panel/icons/icon16.png",
-        "48": "/control-panel/icons/icon48.png",
-        "128": "/control-panel/icons/icon128.png"
+        "16": "/icons/icon16.png",
+        "48": "/icons/icon48.png",
+        "128": "/icons/icon128.png"
     }
 }

@@ -77,7 +77,7 @@ function initTask(taskName) {
             scraperParameters = JSON.parse(storageResponse["scraperParameters"]);
             incognitoMode = (scraperParameters.incognitoMode === "active") ? true : false;
 
-            chrome.windows.create({url: chrome.extension.getURL('bg.html'), incognito: incognitoMode}, function(window){
+            chrome.windows.create({url: chrome.extension.getURL('/controller/placeholder.html'), incognito: incognitoMode}, function(window){
                 console.log("ntScraper Log: " + "-" + taskName + "-" + " initializing");
                 windowId = window.id;
                 tabId = window.tabs[0].id;
@@ -333,7 +333,10 @@ function scrapingUtility(tabId) {
         if (request.subject === "data") {
 
             contentParsed = JSON.parse(request.content);
-                        console.log(contentParsed);
+            console.log(contentParsed);
+            if (contentParsed.length === 0) {
+                console.log("ntScraper: " + "-" + getWkr(tabId).taskName + "-" + " empty data set");
+            }
             //decide how to save content depending on regime
             if (getWkr(tabId).savingRegime === "rewrite") {
                 chrome.storage.local.set(contentParsed, function() {
@@ -460,7 +463,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         case 'exportScrapingResults':
             window.dispatchEvent(dumpingCacheEvent);
 
-            chrome.tabs.create({url: chrome.extension.getURL('/export/e.html')});
+            chrome.tabs.create({url: chrome.extension.getURL('/export/index.html')});
             break;
 
         case 'resetVault':

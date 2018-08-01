@@ -16,7 +16,7 @@ function tasksManager(taskName) {
             bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 1000}});
             bufferTask.addSubtask({purpose: "navigation", action: "setInputValue", description: {selector: "input.gsfi", source: "searchTasks", textPrefix: "", textSuffix: " official website"}});
             bufferTask.addSubtask({purpose: "navigation", action: "click", causesReload: true, stepMinimumLength: 200, description: {selector: "button.sbico-c"}});
-            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 5000}});
+            bufferTask.addSubtask({purpose: "navigation", action: "wait", description: {duration: 3000}});
             bufferTask.addSubtask({purpose: "scraping", action: "save"});
             break;
 
@@ -55,7 +55,7 @@ function tasksManager(taskName) {
             //6. scroll to bottom (you might find yourself in the middle of chat)
             bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: 100, period: 40, selector: "", checkLimit: 50}});
             //7. start scrolling the history up to load more and more messages
-            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -200, period: 20, selector: "", checkLimit: 50, showStopper: "fullChannel"}}); // showStopper can also be "fullChannel"
+            bufferTask.addSubtask({purpose: "navigation", action: "scroll", description: {regime: "toTheEnd", approach: "modern", approachSelector: "div.im_history_scrollable_wrap.nano-content", step: -200, period: 20, selector: "", checkLimit: 50, showStopper: "fullChannel"}}); // showStopper can also be "weekOnly"
             //8. save comprehensive statistics about messages history
             bufferTask.addSubtask({purpose: "scraping", action: "save"});
             break;

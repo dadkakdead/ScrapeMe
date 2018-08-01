@@ -22,6 +22,7 @@ setInterval(function() {
     });
 }, 500);
 
+// Send the scraper configuration to control panel on request
 function setScraperParameterUtil(request){
     chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
         chrome.storage.local.get(["scraperParameters"], function(storageResponse) {
@@ -46,8 +47,6 @@ function setScraperParameterUtil(request){
                     scraperParameters["incognitoMode"] = request.status;
                     break;
             }
-
-            console.log(scraperParameters);
 
             chrome.storage.local.set({"scraperParameters" : JSON.stringify(scraperParameters)}, function() {
                 chrome.tabs.sendMessage(scraperParameters["investigationTabId"], {controllerCommand: "switchInvestigation", state: scraperParameters});

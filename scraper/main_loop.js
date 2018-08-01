@@ -66,15 +66,17 @@ chrome.runtime.onConnect.addListener(function(port) {
 });
 
 function scrapingController(scrapingLoopFlag) {
-    scrapingFunction = (subtaskPublic.description.partOfPageId === "") ? subtaskPublic.taskName : subtaskPublic.taskName + "_" + subtaskPublic.description.partOfPageId;
+    scrapingFunction = (subtaskPublic.description.partOfPageId === "" || subtaskPublic.description.partOfPageId === undefined) ? subtaskPublic.taskName : subtaskPublic.taskName + "_" + subtaskPublic.description.partOfPageId;
 
-    console.log("ntScraper: " + "scraping data");
+    console.log("ntScraper: " + "running " + scrapingFunction + ", scraping data");
     if (window[scrapingFunction] !== undefined) {
         var dataVault = window[scrapingFunction]()
     } else {
         console.log("ntScraper: " + "scrape function not found");
         var dataVault = new Object();
     }
+
+    console.log(dataVault);
 
     if (scrapingLoopFlag) {
         return dataVault;

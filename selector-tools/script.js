@@ -1,5 +1,5 @@
 var s = document.createElement('script');
-s.src = chrome.extension.getURL('/selector-tools/st_inj.js');
+s.src = chrome.extension.getURL('/selector-tools/copy_injected.js');
 s.onload = function() {
     s.remove();
 };
