@@ -4,5 +4,8 @@
 
 ---
 
+
+![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
+
 ## Farewell ##
 I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.
