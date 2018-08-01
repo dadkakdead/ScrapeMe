@@ -1,6 +1,8 @@
-# bowling_tg
-Bowling - Telegram edition
+### What is ntScraper? ###
 
-Crawl web catalogues, dive into channels, and all that via web client
+**ntReport** is a web scraping framework in form of Chrome Extension, which can run 10+ scraping tasks in separate windows asynchronously.
 
-To get support you can ping me in Telegram: https://t.me/devrazdev, or you ca reach me by mail: devrazdev@gmail.com.
+---
+
+## Farewell ##
+I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.

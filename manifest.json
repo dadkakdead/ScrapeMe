@@ -1,19 +1,18 @@
 {
     "manifest_version": 2,
-    "name": "Bowling - Telegram edition",
-    "version": "5.1",
-    "description": "Crawl web catalogues, dive into channels, and all that via web client",
+    "name": "ntScraper - Telegram edition",
+    "version": "6.0",
+    "description": "Extract data from websites and web applications without leaving Chrome.",
 
     "background": {
         "scripts": [
-            "/utilities/date.format.js",
-            "bg_tasks_logic.js",
-            "bg_controller.js",
-            "bg_controller_utils.js",
-            "bg_cache.js",
-            "bg_tasks_archive.js",
-            "bg_tasks_logic.js",
-            "bg_telegram_notifications.js"
+            "/third-party/date.format.js",
+            "/tasks/t_defaults.js",
+            "/tasks/t_tasks.js",
+            "/controller/c_brain.js",
+            "/controller/c_brain_utils.js",
+            "/controller/c_cache.js",
+            "/misc/telegram_notifications.js"
         ],
         "persistent" : false
     },
@@ -25,33 +24,35 @@
             "file://*/*"
         ],
         "js": [
-            "/utilities/date.format.js",
-            "/utilities/time.js",
-            "/utilities/js_extension.js",
-            "/utilities/telegram.js",
-            "/utilities/fungus_songs.js",
-            "/utilities/typing.js",
-            "/thirdparty/jquery-3.1.1.min.js",
-            "/utilities/jquery_extension.js",
-            "investigate_logic.js",
-            "cs_living_fungus.js",
-            "cs_living_sasha.js",
-            "cs_scraping.js",
-            "cs_scraping_loop.js",
-            "cs_navigation.js",
-            "cs_extraction.js",
-            "cs_uploading.js"
+            "/third-party/date.format.js",
+            "/third-party/jquery-3.1.1.min.js",
+            "/scripts/utilities/text-utilities.js",
+            "/scripts/utilities/time-utilities.js",
+            "/scripts/utilities/telegram-utilities.js",
+            "/scripts/scrapeGoogleSearchResults.js",
+            "/scripts/scrapeTchannels.js",
+            "/scripts/scrapeTelegramChannels.js",
+            "/scripts/scrapeTsearch.js",
+            "/scripts/scrapeTlgrm.js",
+            "/selector-tools/st.js",
+            "/selector-tools/st_inj.js",
+            "/scraper/s_actions.js",
+            "/scraper/s_inj.js",
+            "/scraper/s_loop_events.js",
+            "/scraper/s_main_loop.js",
+            "/import/i.js"
         ],
         "css": [
-            "investigate_style.css"
+            "/selector-tools/st.css"
         ],
         "all_frames": true,
         "run_at": "document_start"
     }],
 
     "web_accessible_resources": [
-        "inj_input.js",
-        "/thirdparty/jquery-3.1.1.min.js"
+        "/selector-tools/st_inj.js",
+        "/scraper/s_inj.js",
+        "/third-party/jquery-3.1.1.min.js"
     ],
 
     "permissions": [
@@ -69,13 +70,13 @@
     ],
 
     "browser_action": {
-        "default_popup": "pp.html",
-        "default_icon": "pp_icon.png"
+        "default_popup": "/control-panel/cp.html",
+        "default_icon": "/control-panel/icons/icon.png"
     },
 
     "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "16": "/control-panel/icons/icon16.png",
+        "48": "/control-panel/icons/icon48.png",
+        "128": "/control-panel/icons/icon128.png"
     }
 }

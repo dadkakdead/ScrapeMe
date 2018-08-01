@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/control-panel/cp.js"></script>
+        <link rel="stylesheet" type="text/css" href="/control-panel/cp.css">
+
+        <title>ntScraper</title>
+    </head>
+
+    <body>
+        <h3>TASKS</h3>
+        <div id="g1" class="group">
+            <h3 class="groupTitle">Google Search</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="scrapeGoogleSearchResults">search</button></li>
+            </ul>
+        </div>
+
+        <div id="g2" class="group">
+            <h3 class="groupTitle">Telegram Channels Websites</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="scrapeTsearch">tsear.ch</button></li>
+                <li><button class="action" taskName="scrapeTchannels">tchannels.me</button></li>
+                <li><button class="action" taskName="scrapeTlgrm">tlgrm.ru</button></li>
+            </ul>
+        </div>
+
+        <div id="g10" class="group">
+            <h3 class="groupTitle">Telegram Web Client</h3>
+            <ul class="groupButtons">
+                <li><button class="action" taskName="scrapeTelegramChannels">Load posts since last week</button></li>
+            </ul>
+        </div>
+
+        --------------------------------
+
+        <h3>MEMORY</h3>
+        <button class="action" taskName="clearCache">Clear cache</button>&nbsp&nbsp</label><input type="checkbox" class="scraperParameter" id="cachePersistence"/>Lock cache</label>
+        <div id="cacheSize"></div>
+
+        --------------------------------
+
+        <h3>INPUT</h3>
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="searchTasks">Upload search tasks</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="searchTasks">R</button>
+        <div id="searchTasksVaultSize"></div>
+
+        <button class="action" controllerCommand="uploadFromWebpage" dataType="links">Upload links</button>&nbsp&nbsp<button class="action" controllerCommand="resetVault" dataType="links">R</button><br>
+        <div id="linksVaultSize"></div>
+        --------------------------------
+
+        <h3>EXPORT</h3>
+        <button id="export">View results in CSV-like format</button>
+        <br>
+        --------------------------------
+
+        <h3>RUN-TIME CONTROL</h3>
+        <label><input type="checkbox" class="scraperParameter"  id="incognitoMode"/>Run in incognito</label>
+        <button class="action" controllerCommand="resetVault" dataType="workers">Shut all workers</button><br>
+        --------------------------------
+
+        <h3>UTILITIES</h3>
+        <label><input type="checkbox" class="scraperParameter" id="investigationStatus"/>Investigate page</label>
+        <label><input type="checkbox" class="scraperParameter" id="inventSelectorStatus"/>Guess selector</label>
+    </body>
+</html>
