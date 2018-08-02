@@ -1,12 +1,12 @@
 ### What is ChromeBot? ###
 
-**ChromeBot** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web appications and export data to CSV file.
+**ChromeBot** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web applications and export data to CSV file.
 
 [web scraping]: <https://en.wikipedia.org/wiki/Web_scraping>
 
 ---
 
-### Problem statement ###
+### Yet another tool? ###
 > "Tools and frameworks come and go, choose the one that fits the job." [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
 
 Scraping tools exist in almost [any programming language] with [huge number] of particular libraries for JavaScript, but there is still a demand for "less coding" ones (like [import.io](https://www.import.io/)). It is natural to search for such "no coding" tools among Chrome Extensions, so here are some of the most noticeble:
