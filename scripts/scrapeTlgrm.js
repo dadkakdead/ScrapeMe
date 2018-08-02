@@ -4,7 +4,7 @@ function scrapeTlgrm(){
     $("div.channel-card").each(function(){
         channel = new Object();
 
-        channelId = $(this).find(".channel-card__username").attr("href").replace('https://tlgrm.ru/channels/', '');
+        channelId = $(this).find(".channel-card__username").text().replace(/[\r\n]/g, "").trim();
 
         channel.name = $(this).find(".channel-card__title").text().replace(/[\r\n]/g, "").trim();
         channel.size = $(this).find(".channel-card__subscribers").text().replace(/[\r\n]/g, "").trim();

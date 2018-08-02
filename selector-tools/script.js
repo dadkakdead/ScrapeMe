@@ -1,9 +1,16 @@
-var s = document.createElement('script');
-s.src = chrome.extension.getURL('/selector-tools/copy_injected.js');
-s.onload = function() {
-    s.remove();
+var s1 = document.createElement('script');
+s1.src = chrome.extension.getURL('/selector-tools/copy_injected.js');
+s1.onload = function() {
+    s1.remove();
 };
-(document.head || document.documentElement).appendChild(s);
+(document.head || document.documentElement).appendChild(s1);
+
+var s2 = document.createElement('script');
+s2.src = chrome.extension.getURL('/third-party/jquery-3.1.1.min.js');
+s2.onload = function() {
+    s2.remove();
+};
+(document.head || document.documentElement).appendChild(s2);
 
 // appended with delay
 document.addEventListener('DOMContentLoaded', function() {

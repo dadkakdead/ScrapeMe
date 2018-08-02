@@ -12,14 +12,29 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("copyVisibleToClipboard").addEventListener('click', copyExportScreenContentToClipboard);
 });
 
+function selectElementContents(el) {
+        var body = document.body, range, sel;
+        if (document.createRange && window.getSelection) {
+            range = document.createRange();
+            sel = window.getSelection();
+            sel.removeAllRanges();
+            try {
+                range.selectNodeContents(el);
+                sel.addRange(range);
+            } catch (e) {
+                range.selectNode(el);
+                sel.addRange(range);
+            }
+        } else if (body.createTextRange) {
+            range = body.createTextRange();
+            range.moveToElementText(el);
+            range.select();
+        }
+    }
+
 function copyExportScreenContentToClipboard(){
-    range = document.createRange();
-
-    exportScreen = document.getElementById("exportScreen"),
-    range.selectNode(exportScreen);
-
-    window.getSelection().addRange(range);
-
+    exportScreen = document.getElementById("exportTable"),
+    selectElementContents(exportScreen);
     document.execCommand('copy');
 }
 
@@ -44,17 +59,17 @@ function exportEntry(dataType, entry) {
         while (propertiesInBuffer < propertiesAll) {
             for (var property in entry) {
                 if ((property === "pageUrl") && (propertiesInBuffer === 0)) {
-                    entryBuffer += strFilter(entry[property]) + delimiter;
+                    entryBuffer += "<td>" + strFilter(entry[property]) + "</td>";
                     propertiesInBuffer += 1;
                     break;
                 }
                 if ((property === "taskId") && (propertiesInBuffer === 1)) {
-                    entryBuffer += strFilter(entry[property]) + delimiter;
+                    entryBuffer += "<td>" + strFilter(entry[property]) + "</td>";
                     propertiesInBuffer += 1;
                     break;
                 }
                 if ((property !== "pageUrl") && (property !== "taskId") && (propertiesInBuffer > 1)) {
-                    entryBuffer += strFilter(entry[property]) + delimiter;
+                    entryBuffer += "<td>" + strFilter(entry[property]) + "</td>";
                     propertiesInBuffer += 1;
                 }
             }
@@ -66,7 +81,7 @@ function exportEntry(dataType, entry) {
     if ((dataType === "links") || (dataType === "searchTasks")) {
         for (var property in entry) {
             if (property === "status" || property === "tabId") {
-                entryBuffer += strFilter(entry[property]) + delimiter;
+                entryBuffer += "<td>" + strFilter(entry[property]) + "</td>";
             }
         }
     }
@@ -121,18 +136,21 @@ function exportStorage(dataType) {
                 break;
         }
 
+
         if (Object.keys(items).length > 0) {
+            //first line in export stands for column titles
             itemProperties = {};
             for (var prop in items[Object.keys(items)[0]]) {
                 itemProperties[prop] = prop;
             }
-            keysBuffer += "resultId" + delimiter + exportEntry(dataType, itemProperties) + "<br>";
+            keysBuffer += "<tr>" + "<td>" + "resultId" + "</td>" + exportEntry(dataType, itemProperties) + "</tr>";
 
-        for (var key in items) {
-                exportBuffer += strFilter(key) + delimiter + exportEntry(dataType, items[key]) + "<br>";
+            //then goes export result
+            for (var key in items) {
+                exportBuffer += "<tr>" + "<td>" + strFilter(key) + "</td>" + exportEntry(dataType, items[key]) + "</tr>";
             }
 
-        document.getElementById("exportScreen").innerHTML = keysBuffer + exportBuffer;
+        document.getElementById("exportScreen").innerHTML = "<div style=\"overflow-x:auto;\"><table id=\"exportTable\">" + keysBuffer + exportBuffer + "</table></div>";
         }
     });
 }
