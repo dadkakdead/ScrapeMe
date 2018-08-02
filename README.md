@@ -1,40 +1,75 @@
-### What is ntScraper? ###
+### What is ChromeBot? ###
 
-**ntScraper** is a [web scraping] framework in form of Chrome Extension, which can asynchronously run any number of scraping tasks in separate windows. It's good for medium scale (~1,000 to ~100,000 records) data extraction.
+**ChromeBot** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web appications and export data to CSV file.
 
 [web scraping]: <https://en.wikipedia.org/wiki/Web_scraping>
 
 ---
 
-### How does it work? ###
-Example: scraping names of Telegram channels from [tlgrm.ru] catalog. There is a queue of 17 dynamic web pages to scrape, workers get added by clicking the task button. Each of them opens the web page, scrolls it down until all the content is loaded and then scrapes it. 
+### Problem statement ###
+> "Tools and frameworks come and go, choose the one that fits the job." [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
 
-[tlgrm.ru]: <https://tlgrm.ru/>
+Scraping tools exist in almost [any programming language] with [huge number] of particular libraries for JavaScript, but there is still a demand for "less coding" ones (like [import.io](https://www.import.io/)). It is natural to search for such "no coding" tools among Chrome Extensions, so here are some of the most noticeble:
 
-![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
+1. [Web Scraper](https://www.webscraper.io/) project on [GitHub](https://github.com/martinsbalodis/web-scraper-chrome-extension/)
+2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
+3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-Get to know many other ntScraper's capabilities by watching [Youtube trailer].
+However, solving complex data extraction problems with them still requires modifying their core logic. **ChromeBot** was created in the attempt to research the minimum acceptable complexity for such an extension(=minimum number of parameters for a scraping task).
 
-[Youtube trailer]: <https://www.youtube.com/watch?v=z6Zkbmm88Hg>
+My experience with **ChromeBot** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It's then very likely that it presents a good infrastructure layer for your client-side scraping assignments too.
 
-### ntScraper features ###
-TO DO
-
-### Should i use it? ###
-> "Tools and frameworks come and go, choose the one that fits the job."
-[ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
-
-Scraping tools exist for users of [any programming background]. 
- 
-
-
-[any programming background]: <https://github.com/BruceDone/awesome-crawler>
 [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
+[any programming language]: <https://github.com/BruceDone/awesome-crawler>
+[huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
-### Can I live without any tools? ###
+### Main features ###
+- Import of URLs or search queries
+- Replay of a sequence of browsing actions
+- Simulation of user input (clicking, scrolling, typing)
+- Extraction of page data with jQuery selectors 
+- Export scraping results to CSV
+- Simultaneous execution of multiple data extraction jobs
+
+### Example problem solved with ChromeBot (easy) ###
+Task: Extract names of Telegram channels from [tlgrm.ru] catalog. 
+
+Backgound: The list of channels is partly loaded by default, and loading it full requires scrolling down to the moment new channels stop getting loaded (like in Instagram). Once all the channels are loaded at the page, their names can be easily scraped.
+
+Actions (assuming scraping script is ready): 
+- Step 1: Import list of URLs (may be collected manually)
+- Step 2: Start the ChromeBot, add scraping threads
+- Step 3: Export results
+
+Result: See the list of channels' names and IDs.
+
+[tlgrm.ru]: <https://tlgrm.ru/channels/>
+
+![ChromeBot-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo_easy.gif)
+
+### Example problem solved with ChromeBot (hard) ###
+
+Task: extract the date when Telegram channels were created.
+
+Backgound: Date of creation can be found in the first messages of channel threads. There are many ways to access channel threads, ranging from [command line interface] to [web] interface. Here we are going to use the web interface of [official Telegram web client]. First we search the channel, second we scroll it's thread up to the beginning and then we extract the date.
+
+Actions:	
+- Step 1: Import list of channel IDs (can be takes from Example problem 1)
+- Step 2: Start the ChromeBot
+- Step 3: Export results
+
+Result: see the list of channels' names and their "dates of birth".
+
+[command line interface]: <https://github.com/vysheng/tg>
+[web interface]: <https://github.com/GetGems/Web-client>
+[official Telegram web client]: https://web.telegram.org/#/im
+
+![ChromeBot-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo_hard.gif)
+
+### Short lesson on jQuery selectors ###
 Until the data you need to scrape is located on a single page, you are ok. Tasks of any higher complexity (pagination / dynamic pages / capthca / searching with parameters / etc.) will be  solved with tools faster.
 
-**Example: look at the [craigslist page with used Triumph motorcycles]. What is the fastest way to quickly get the average price?**
+**Example: look at the [craigslist page with used Triumph motorcycles] and figure out their average price **
 
 1. Open page in browser, move the cursor to the price badge, click the right button and "Inspect" the element. You will see something like:
     ```html
