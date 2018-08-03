@@ -1,10 +1,20 @@
-### What is ChromeBot? ###
+### What is ntScraper? ###
 
-**ChromeBot** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web applications and export data to CSV file.
+**ntScraper** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web applications and export data to CSV file.
 
 [web scraping]: <https://en.wikipedia.org/wiki/Web_scraping>
 
 ---
+
+### Main features ###
+- Import of URLs or search queries
+- Replay of a sequence of browsing actions
+- Simulation of user input (clicking, scrolling, typing)
+- Extraction of page data with jQuery selectors 
+- Export scraping results to CSV
+- Simultaneous execution of multiple data extraction jobs
+
+![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
 
 ### Yet another tool? ###
 > "Tools and frameworks come and go, choose the one that fits the job." [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
@@ -15,39 +25,31 @@ Scraping tools exist in almost [any programming language] with [huge number] of 
 2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
 3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-However, solving complex data extraction problems with them still requires modifying their core logic. **ChromeBot** was created in the attempt to research the minimum acceptable complexity for such an extension(=minimum number of parameters for a scraping task).
+However, solving complex data extraction problems with them still requires modifying their core logic. **ntScraper** was created in the attempt to research the minimum acceptable complexity for such an extension(=minimum number of parameters for a scraping task).
 
-My experience with **ChromeBot** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It's then very likely that it presents a good infrastructure layer for your client-side scraping assignments too.
+My experience with **ntScraper** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It's then very likely that it presents a good infrastructure layer for your client-side scraping assignments too.
 
 [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
-### Main features ###
-- Import of URLs or search queries
-- Replay of a sequence of browsing actions
-- Simulation of user input (clicking, scrolling, typing)
-- Extraction of page data with jQuery selectors 
-- Export scraping results to CSV
-- Simultaneous execution of multiple data extraction jobs
-
-### Example problem solved with ChromeBot (easy) ###
+### Example problem solved with ntScraper (easy) ###
 Task: Extract names of Telegram channels from [tlgrm.ru] catalog. 
 
 Backgound: The list of channels is partly loaded by default, and loading it full requires scrolling down to the moment new channels stop getting loaded (like in Instagram). Once all the channels are loaded at the page, their names can be easily scraped.
 
 Actions (assuming scraping script is ready): 
 - Step 1: Import list of URLs (may be collected manually)
-- Step 2: Start the ChromeBot, add scraping threads
+- Step 2: Start the ntScraper, add scraping threads
 - Step 3: Export results
 
 Result: See the list of channels' names and IDs.
 
 [tlgrm.ru]: <https://tlgrm.ru/channels/>
 
-![ChromeBot-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo_easy.gif)
 
-### Example problem solved with ChromeBot (hard) ###
+
+### Example problem solved with ntScraper (hard) ###
 
 Task: extract the date when Telegram channels were created.
 
@@ -55,7 +57,7 @@ Backgound: Date of creation can be found in the first messages of channel thread
 
 Actions:	
 - Step 1: Import list of channel IDs (can be takes from Example problem 1)
-- Step 2: Start the ChromeBot
+- Step 2: Start the ntScraper
 - Step 3: Export results
 
 Result: see the list of channels' names and their "dates of birth".
@@ -64,7 +66,6 @@ Result: see the list of channels' names and their "dates of birth".
 [web interface]: <https://github.com/GetGems/Web-client>
 [official Telegram web client]: https://web.telegram.org/#/im
 
-![ChromeBot-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo_hard.gif)
 
 ### Short lesson on jQuery selectors ###
 Until the data you need to scrape is located on a single page, you are ok. Tasks of any higher complexity (pagination / dynamic pages / capthca / searching with parameters / etc.) will be  solved with tools faster.
@@ -114,11 +115,71 @@ Until the data you need to scrape is located on a single page, you are ok. Tasks
 
 ## Developers corner ##
 
-### How to add a task? ###
-<TO DO>
+### How to ### 
+- [Install ntScraper](https://www.google.com/search?q=chrome+install+unpacked+extension)
 
-### Repository structure ###
-<TO DO>
+### How to add my task to ntScraper? ###
+1. Come up with a short task name, like *myTask*.
+
+2. Create a button to run it by pasting a piece of HTML to "/control-panel/index.html"
+```html
+<div class="group">
+	<h3 class="groupTitle">My title</h3>
+        <ul class="groupButtons">
+                <li><button class="action" taskName="myTask">My task name</button></li>
+        </ul>
+</div>
+```
+
+3. Add the name of your task to *taskNames* in "/tasks/tasks.js"
+```javascript
+var taskNames = ["...",
+                 "...",
+                 "myTask"];
+```
+
+4. Describe your task in the *taskManager* function in "/tasks/tasks.js". For example, lines below correspond to the simple task of scraping https://mysite.com/page/1 upon it's loading. Copy-paste the snippet to the the switch-case.
+```javascript
+case "myTask":
+	bufferTask = new Task({taskName: taskName, rootPageHost: "mysite.com", rootPageSubref: "/page/1/"});
+        	bufferTask.addSubtask({purpose: "scraping", action: "save"});
+            	break;
+```
+
+5. Create a "myTask.js" file in the "/scripts/" folder. Minimum required content is:
+```javascript
+function myTask() {
+    var myData = new Object();
+    
+    var myRecord = new Object();
+    myRecordId = "myId";
+    
+    myRecord.taskId = subtaskPublic.taskId;
+    myRecord.pageUrl = subtaskPublic.currentPageUrl;
+    myRecord.timestamp = String(Date.now());
+
+    myData[myRecordId] = JSON.stringify(myRecord);
+    
+    return myData;
+}
+```
+*myTask* function will run upon loading of https://mysite.com/page/1. *myData* is usually used to hold the structured content of the scraped page. *taskId*, *pageUrl* and *timestamp* properties are required by controller to manage the export data.
+
+6. Add "myTask.js" to the list of content-scripts in "manifest.json"
+```json
+"content_scripts": [{
+        ...
+        "js": [
+            ...
+            "/scripts/myTask.js",
+	    ...
+        ],
+	...
+    }],
+``` 
+7. Reload the extension and try to run the task. Expected behavior: when you click the "My task name" button, your browser opens new window, goes to https://mysite.com/page/1, *myTask()* function gets executed on the background, then window closes. **ntScraper** writes a data point to it's cache, which you can check by going to Export page and clicking "Show scraping cache".
+
+To debug the scraper, check the logs in the console of extension's background page and in the scraped page itself.
 
 ## Farewell ##
 I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.
