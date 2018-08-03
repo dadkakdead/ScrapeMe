@@ -19,15 +19,15 @@
 ### Yet another tool? ###
 > "Tools and frameworks come and go, choose the one that fits the job." [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
 
-Scraping tools exist in almost [any programming language] with [huge number] of particular libraries for JavaScript, but there is still a demand for "less coding" ones (like [import.io](https://www.import.io/)). It is natural to search for such "no coding" tools among Chrome Extensions, so here are some of the most noticeble:
+Scraping tools exist in almost [any programming language] with [huge number] of particular libraries for JavaScript, but there is still a demand for "less coding" ones (like [import.io](https://www.import.io/)). It is natural to search for such "no coding" tools among Chrome Extensions, here are some of the most noticeble:
 
 1. [Web Scraper](https://www.webscraper.io/) project on [GitHub](https://github.com/martinsbalodis/web-scraper-chrome-extension/)
 2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
 3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-However, solving complex data extraction problems with them still requires modifying their core logic. **ntScraper** was created in the attempt to research the minimum acceptable complexity for such an extension(=minimum number of parameters for a scraping task).
+However, solving complex data extraction problems with them still requires modifying their core. **ntScraper** was created in the attempt to research the minimum acceptable complexity for such an extension(= minimum number of parameters for a scraping task).
 
-My experience with **ntScraper** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It's then very likely that it presents a good infrastructure layer for your client-side scraping assignments too.
+My experience with **ntScraper** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It might be the case that it can help you also. However, the learning curve is pretty steep and requires good understanding of JavaScript.
 
 [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
@@ -43,7 +43,7 @@ Actions (assuming scraping script is ready):
 - Step 2: Start the ntScraper, add scraping threads
 - Step 3: Export results
 
-Result: See the list of channels' names and IDs.
+Result: the list of channels' names and IDs.
 
 [tlgrm.ru]: <https://tlgrm.ru/channels/>
 
@@ -60,7 +60,7 @@ Actions:
 - Step 2: Start the ntScraper
 - Step 3: Export results
 
-Result: see the list of channels' names and their "dates of birth".
+Result: the list of channels' names and their "dates of birth".
 
 [command line interface]: <https://github.com/vysheng/tg>
 [web interface]: <https://github.com/GetGems/Web-client>
@@ -185,5 +185,3 @@ To debug the scraper, check the logs in the console of extension's background pa
 I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.
 
 Well, there are still good and bad tools (like [Internet Exporer automation with VBA]).
-
-[Internet Exporer automation with VBA]: <Automating the Internet Explorer Web Browser (Entering Text and Clicking Button)>
