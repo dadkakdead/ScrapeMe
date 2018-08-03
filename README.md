@@ -184,4 +184,5 @@ To debug the scraper, check the logs in the console of extension's background pa
 ## Farewell ##
 I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.
 
-Well, there are still good and bad tools (like [Internet Exporer automation with VBA]).
+## P.S. ##
+Please never try to [automate Internet Explorer by writing VBA macroses in Microsoft Excel].
