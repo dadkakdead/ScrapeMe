@@ -127,10 +127,10 @@ You can select all price badges with jQuery like this:
 ### How to ### 
 - [Install ntScraper](https://www.google.com/search?q=chrome+install+unpacked+extension)
 
-### How to add my task to ntScraper? ###
-1. Come up with a short task name, like *myTask*.
+### How to add a task to ntScraper ###
+1. Create a name for the task. "myTask" is the name used for this example.
 
-2. Create a button to run it by pasting a piece of HTML to "/control-panel/index.html"
+2. Create a button to run the task by pasting a piece of HTML to [/control-panel/index.html]:
 ```html
 <div class="group">
 	<h3 class="groupTitle">My title</h3>
@@ -139,15 +139,17 @@ You can select all price badges with jQuery like this:
         </ul>
 </div>
 ```
+[/control-panel/index.html]: <https://github.com/devrazdev/ntScraper/blob/master/control-panel/index.html>
 
-3. Add the name of your task to *taskNames* in "/tasks/tasks.js"
+3. Add the name of the task to *taskNames* in [/tasks/tasks.js]
 ```javascript
 var taskNames = ["...",
                  "...",
                  "myTask"];
 ```
+[/tasks/tasks.js]:<https://github.com/devrazdev/ntScraper/blob/master/tasks/tasks.js>
 
-4. Describe your task in the *taskManager* function in "/tasks/tasks.js". For example, lines below correspond to the simple task of scraping https://mysite.com/page/1 upon it's loading. Copy-paste the snippet to the the switch-case.
+4. Copy and paste this JavaScript code into the *taskManager* function to describe the task in [/tasks/tasks.js].
 ```javascript
 case "myTask":
 	bufferTask = new Task({taskName: taskName, rootPageHost: "mysite.com", rootPageSubref: "/page/1/"});
@@ -155,7 +157,7 @@ case "myTask":
             	break;
 ```
 
-5. Create a "myTask.js" file in the "/scripts/" folder. Minimum required content is:
+5.  Create a "myTask.js" file in the "/scripts/" folder. Copy and paste this JavaScript code into the newly created "myTask.js" file. This code has the minimum required content **ntScraper** needs to successfully scrape the data.
 ```javascript
 function myTask() {
     var myData = new Object();
@@ -172,9 +174,9 @@ function myTask() {
     return myData;
 }
 ```
-*myTask* function will run upon loading of https://mysite.com/page/1. *myData* is usually used to hold the structured content of the scraped page. *taskId*, *pageUrl* and *timestamp* properties are required by controller to manage the export data.
+Assuming the third step was completed correctly, the *myTask* function will run once https://mysite.com/page/1 loads. *myData* is used to save the structured content of the scraped page. The **ntScraper** controller requires the *taskId*, *pageUrl*, and *timestamp* variables to manage the scraped data. If these variables are missing, the scraped data cannot be exported.
 
-6. Add "myTask.js" to the list of content-scripts in "manifest.json"
+6. Add "myTask.js" to the list of content scripts in [manifest.json]
 ```json
 "content_scripts": [{
         ...
@@ -186,12 +188,14 @@ function myTask() {
 	...
     }],
 ``` 
-7. Reload the extension and try to run the task. Expected behavior: when you click the "My task name" button, your browser opens new window, goes to https://mysite.com/page/1, *myTask()* function gets executed on the background, then window closes. **ntScraper** writes a data point to it's cache, which you can check by going to Export page and clicking "Show scraping cache".
+[manifest.json]:<https://github.com/devrazdev/ntScraper/blob/master/manifest.json>
 
-To debug the scraper, check the logs in the console of the extension's background page and in the scraped page itself.
+7. Reload the extension, and try to run the task. When you click the "My task name" button in the **ntScraper** control panel, your browser should open a new window and load https://mysite.com/page/1. The *myTask()* function will run in the background, and then the window will close. **ntScraper** will add a data point to its cache, which you can see by clicking "Show scraping cache" on the export page.
+
+To debug the scraper, check the logs in the console of **ntScraper**'s background page and in the console of the scraped page itself.
 
 ## Farewell ##
-I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to email me at devrazdev@gmail.com. Thank you.
+I would be happy to hear any feedback/news about how you use **ntScraper** in real life. Feel free to email me at devrazdev@gmail.com. Thank you.
 
 ### P.S. ###
 Please never try to [automate Internet Explorer by writing VBA macroses in Microsoft Excel].
