@@ -12,29 +12,29 @@
 - Simulate user input (e.g. clicking, scrolling, typing)
 - Extract page data with jQuery selectors 
 - Export scraping results to CSV files
-- Simultaneously execute multiple data extraction jobs
+- Simultaneously execute multiple data extraction tasks
 
 ![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
 
 ### Yet another tool? ###
-> "Tools and frameworks come and go. Choose the one that fits the job." [ESTP course on automated collection of online prices. "Web scraping tools: An introduction." 2017.]
+> ["Tools and frameworks come and go. Choose the one that fits the job."]
 
-Scraping tools exist in almost [every programming language], but there is still a demand for tools that require "less coding," (like [import.io](https://www.import.io/)). Here are some of the more popular “no coding” tools among Chrome extensions:
+Scraping tools exist for almost [every programming language], but there is still a demand for tools that require "less coding," like [import.io](https://www.import.io/). Here are some of the more popular “no coding” tools among Chrome extensions:
 
 1. [Web Scraper](https://www.webscraper.io/) project on [GitHub](https://github.com/martinsbalodis/web-scraper-chrome-extension/)
 2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
 3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-However, these extensions can perform complex data extractions only if their cores are modified. **ntScraper** was created to minimize the number of parameters required for a scraping task and therefore simplify the process of complex data extractions. 
+However, these extensions can perform complex data extractions only if their cores are modified, whereas **ntScraper** does not require any core modification for these tasks. 
 
-I have used **ntScraper** for over 100 scraping assignments of all major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram Web Client.) The assignments were all solved using the same core. It might be the case that **ntScraper** can help you also. However, the learning curve is pretty steep and requires a good understanding of JavaScript.
+I have used **ntScraper** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram). It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ntScraper**.
 
-[ESTP course on automated collection of online prices. "Web scraping tools: An introduction." 2017.]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
+["Tools and frameworks come and go. Choose the one that fits the job."]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
 ### Example of a problem solved with ntScraper (easy) ###
-Task: Extract the names of Telegram channels from [tlgrm.ru] catalog. 
+Task: Extract the names of Telegram channels from the [tlgrm.ru] catalog. 
 
 Background: The list of channels is partially loaded by default. Fully loading the list requires scrolling all the way down until new channels stop loading, like in Instagram. Once all the channels are loaded, their names can be easily scraped.
 
@@ -53,7 +53,7 @@ Result: A list of the channel names and their IDs.
 
 Task: Extract the creation dates of Telegram channels.
 
-Background: The creation dates can be found in the first messages of the channel threads. There are many ways to access the channel threads, ranging from [command line interface] to [web] interface. In this example, we will use the web interface of the [official Telegram Web Client]. First, we search for the channel. Second, we scroll up to the beginning of the thread. Finally, we extract the creation date.
+Background: The creation dates can be found in the first messages of the channel threads. There are many ways to access the channel threads, ranging from [command line interface] to [web] interface. In this example, use the web interface of the [official Telegram Web Client]. First, we search for the channel. Next, we scroll up to the beginning of the thread. Finally, we extract the creation date.
 
 Actions:	
 - Step 1: Import the list of channel IDs (can be taken from the first example)
