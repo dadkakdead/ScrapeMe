@@ -1,66 +1,66 @@
 ### What is ntScraper? ###
 
-**ntScraper** is a Chrome extension for [web scraping]. With it's help you can automate data extraction from dynamic websites or web applications and export data to CSV file.
+**ntScraper** is a Chrome extension for [web scraping]. With its help, you can automate data extraction from dynamic websites or web applications and export the data to a CSV file.
 
 [web scraping]: <https://en.wikipedia.org/wiki/Web_scraping>
 
 ---
 
 ### Main features ###
-- Import of URLs or search queries
-- Replay of a sequence of browsing actions
-- Simulation of user input (clicking, scrolling, typing)
-- Extraction of page data with jQuery selectors 
-- Export scraping results to CSV
-- Simultaneous execution of multiple data extraction jobs
+- Import URLs or search queries
+- Replay sequences of browsing actions
+- Simulate user input (e.g. clicking, scrolling, typing)
+- Extract page data with jQuery selectors 
+- Export scraping results to CSV files
+- Simultaneously execute multiple data extraction jobs
 
 ![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
 
 ### Yet another tool? ###
-> "Tools and frameworks come and go, choose the one that fits the job." [ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]
+> "Tools and frameworks come and go. Choose the one that fits the job." [ESTP course on automated collection of online prices. "Web scraping tools: An introduction." 2017.]
 
-Scraping tools exist in almost [any programming language] with [huge number] of particular libraries for JavaScript, but there is still a demand for "less coding" ones (like [import.io](https://www.import.io/)). It is natural to search for such "no coding" tools among Chrome Extensions, here are some of the most noticeble:
+Scraping tools exist in almost [every programming language], but there is still a demand for tools that require "less coding," (like [import.io](https://www.import.io/)). Here are some of the more popular “no coding” tools among Chrome extensions:
 
 1. [Web Scraper](https://www.webscraper.io/) project on [GitHub](https://github.com/martinsbalodis/web-scraper-chrome-extension/)
 2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
 3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-However, solving complex data extraction problems with them still requires modifying their core. **ntScraper** was created in the attempt to research the minimum acceptable complexity for such an extension(= minimum number of parameters for a scraping task).
+However, these extensions can perform complex data extractions only if their cores are modified. **ntScraper** was created to minimize the number of parameters required for a scraping task and therefore simplify the process of complex data extractions. 
 
-My experience with **ntScraper** includes 100+ scraping assignments for all major social networking web sites (Facebook, LinkedIn, etc.) and many different web applications (JIRA, Telegram web client, etc.), all solved with the same core. It might be the case that it can help you also. However, the learning curve is pretty steep and requires good understanding of JavaScript.
+I have used **ntScraper** for over 100 scraping assignments of all major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram Web Client.) The assignments were all solved using the same core. It might be the case that **ntScraper** can help you also. However, the learning curve is pretty steep and requires a good understanding of JavaScript.
 
-[ESTP course on Automated collection of online prices, "Web scraping tools, an introduction", 2017]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
+[ESTP course on automated collection of online prices. "Web scraping tools: An introduction." 2017.]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
-### Example problem solved with ntScraper (easy) ###
-Task: Extract names of Telegram channels from [tlgrm.ru] catalog. 
+### Example of a problem solved with ntScraper (easy) ###
+Task: Extract the names of Telegram channels from [tlgrm.ru] catalog. 
 
-Backgound: The list of channels is partly loaded by default, and loading it full requires scrolling down to the moment new channels stop getting loaded (like in Instagram). Once all the channels are loaded at the page, their names can be easily scraped.
+Background: The list of channels is partially loaded by default. Fully loading the list requires scrolling all the way down until new channels stop loading, like in Instagram. Once all the channels are loaded, their names can be easily scraped.
 
-Actions (assuming scraping script is ready): 
-- Step 1: Import list of URLs (may be collected manually)
-- Step 2: Start the ntScraper, add scraping threads
-- Step 3: Export results
+Actions (assuming the scraping script is ready): 
+- Step 1: Import the list of URLs (may be collected manually)
+- Step 2: Start ntScraper and add scraping threads
+- Step 3: Export the results
 
-Result: the list of channels' names and IDs.
+Result: A list of the channel names and their IDs.
 
 [tlgrm.ru]: <https://tlgrm.ru/channels/>
 
 
 
-### Example problem solved with ntScraper (hard) ###
+### Example of a problem solved with ntScraper (hard) ###
 
-Task: extract the date when Telegram channels were created.
+Task: Extract the creation dates of Telegram channels.
 
-Backgound: Date of creation can be found in the first messages of channel threads. There are many ways to access channel threads, ranging from [command line interface] to [web] interface. Here we are going to use the web interface of [official Telegram web client]. First we search the channel, second we scroll it's thread up to the beginning and then we extract the date.
+Background: The creation dates can be found in the first messages of the channel threads. There are many ways to access the channel threads, ranging from [command line interface] to [web] interface. In this example, we will use the web interface of the [official Telegram Web Client]. First, we search for the channel. Second, we scroll up to the beginning of the thread. Finally, we extract the creation date.
 
 Actions:	
-- Step 1: Import list of channel IDs (can be takes from Example problem 1)
+- Step 1: Import the list of channel IDs (can be taken from the first example)
 - Step 2: Start the ntScraper
-- Step 3: Export results
+- Step 3: Export the results
 
-Result: the list of channels' names and their "dates of birth".
+Result: A list of channel names and their creation dates
 
 [command line interface]: <https://github.com/vysheng/tg>
 [web interface]: <https://github.com/GetGems/Web-client>
@@ -68,19 +68,20 @@ Result: the list of channels' names and their "dates of birth".
 
 
 ### Short lesson on jQuery selectors ###
-Until the data you need to scrape is located on a single page, you are ok. Tasks of any higher complexity (pagination / dynamic pages / capthca / searching with parameters / etc.) will be  solved with tools faster.
+iQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools.
 
-**Example: look at the [craigslist page with used Triumph motorcycles] and figure out their average price **
+**Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
 
-1. Open page in browser, move the cursor to the price badge, click the right button and "Inspect" the element. You will see something like:
+1. Open the page in a browser, right-click any price badge, and select “Inspect.” The HTML for each price badge is displayed in a single row like this:
     ```html
-    <li class="result-row" data-pid="..." data-repost-of="...">
-        ...
         <span class="result-price">$5000</span>
-        ...
-    </li>
-    ```
-    Each search result takes one row, every row has a price. Prices are styled by adding class **result-price**
+```
+
+You can select all price badges with jQuery like this:
+    ```javascript
+        $(“span.result-rom”)
+```
+
 
 2. Mention that "local" results precede the disclaimer
     ```html
@@ -179,10 +180,11 @@ function myTask() {
 ``` 
 7. Reload the extension and try to run the task. Expected behavior: when you click the "My task name" button, your browser opens new window, goes to https://mysite.com/page/1, *myTask()* function gets executed on the background, then window closes. **ntScraper** writes a data point to it's cache, which you can check by going to Export page and clicking "Show scraping cache".
 
-To debug the scraper, check the logs in the console of extension's background page and in the scraped page itself.
+To debug the scraper, check the logs in the console of the extension's background page and in the scraped page itself.
 
 ## Farewell ##
-I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to write me at devrazdev@gmail.com. Thank you.
+I would be happy to hear any feedback/news about how you use **ntOrgchart** in real life. Feel free to email me at devrazdev@gmail.com. Thank you.
 
 ### P.S. ###
 Please never try to [automate Internet Explorer by writing VBA macroses in Microsoft Excel].
+
