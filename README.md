@@ -27,11 +27,13 @@ Scraping tools exist for almost [every programming language], but there is still
 
 However, these extensions can perform complex data extractions only if their cores are modified, whereas **ntScraper** does not require any core modification for these tasks. 
 
-I have used **ntScraper** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram). It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ntScraper**.
+I have used **ntScraper** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram).
 
 ["Tools and frameworks come and go. Choose the one that fits the job."]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
+
+Below are examples of scraping tasks completed using **ntScraper**. Download **ntScraper** to work through the examples. It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ntScraper**.
 
 ### Example of a problem solved with ntScraper (easy) ###
 Task: Extract the names of Telegram channels from the [tlgrm.ru] catalog. 
@@ -68,53 +70,59 @@ Result: A list of channel names and their creation dates
 
 
 ### Short lesson on jQuery selectors ###
-iQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools.
+jQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools like **ntScraper**. Below is an example of how to successfully complete a scraping task with **ntScraper** using jQuery selectors.
 
 **Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
 
 1. Open the page in a browser, right-click any price badge, and select “Inspect.” The HTML for each price badge is displayed in a single row like this:
-    ```html
-        <span class="result-price">$5000</span>
+
+```html
+	<span class="result-price">$5000</span>
 ```
 
 You can select all price badges with jQuery like this:
-    ```javascript
-        $(“span.result-rom”)
+
+```javascript
+	$(“span.result-rom”)
 ```
 
 
-2. Mention that "local" results precede the disclaimer
+2. Notice that the "local" results are displayed above the results from "nearby areas."
+	a. Right-click on any word in the bolded sentences "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search," and select "Inspect." This is the HTML that will result:
     ```html
     <h4 class="ban nearby">
         <span class="bantext">Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search.</span>
     </h4>
     ```
-3. Now we go to console and do 3 things:
-    a. Inject jQuery (for shorter selectors)
+    	b. The jQuery selector for "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search" is:
+```javascript
+    	$("h4.ban.nearby")
+```
+3. Enter the JavaScript console to complete the following 3 tasks:
+	a. Copy and paste this JavaScript code into the console to import jQuery
     ```javascript
 	var jq = document.createElement('script');
 	jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
 	document.getElementsByTagName('head')[0].appendChild(jq);
     ```
-    b. Prevent conflicts with other libraries
+    	b. Copy and paste this Javascript code into the console to prevent possible conflicts with other JavaScript libraries
     ```javascript
     var jq = $.noConflict();
     ```
-    c. Calculate the average price
+    	c. Copy and paste this JavaScript code into the console to calculate the average price of the motorcycles
     ```javascript
     var sum = 0
     jq("h4.ban.nearby").prevAll().each(function(){
     	sum += parseInt($(this).find("span.result-price:eq(0)").text().replace("$","")); 
     });
     console.log(Math.round(sum / jq("h4.ban.nearby").prevAll().length));
-    ```
-4. Ok, so today's average price is **$6167**. 
+    ``` 
 
 [craigslist page with used Triumph motorcycles]: <https://sfbay.craigslist.org/search/mca?query=triumph&sort=rel&srchType=T&hasPic=1&condition=30&condition=40>
 
 ---
 
-## Developers corner ##
+## Developer's corner ##
 
 ### How to ### 
 - [Install ntScraper](https://www.google.com/search?q=chrome+install+unpacked+extension)
