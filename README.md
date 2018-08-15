@@ -16,6 +16,10 @@
 
 ![ScrapeMe-demo](https://github.com/devrazdev/ScrapeMe/raw/master/misc/demo.gif)
 
+To get more impressions you can watch the [smashing video clip about ScrapeMe].
+
+[smashing video clip about ScrapeMe]: <https://www.youtube.com/watch?v=z6Zkbmm88Hg>
+
 ### Yet another tool? ###
 > ["Tools and frameworks come and go. Choose the one that fits the job."]
 
