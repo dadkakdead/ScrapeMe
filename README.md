@@ -1,6 +1,6 @@
-### What is ntScraper? ###
+### What is ScrapeMe? ###
 
-**ntScraper** is a Chrome extension for [web scraping]. With its help, you can automate data extraction from dynamic websites or web applications and export the data to a CSV file.
+**ScrapeMe** is a Chrome extension for [web scraping]. With its help, you can automate data extraction from dynamic websites or web applications and export the data to a CSV file.
 
 [web scraping]: <https://en.wikipedia.org/wiki/Web_scraping>
 
@@ -14,7 +14,7 @@
 - Export scraping results to CSV files
 - Simultaneously execute multiple data extraction tasks
 
-![ntScraper-demo](https://github.com/devrazdev/ntScraper/raw/master/misc/demo.gif)
+![ScrapeMe-demo](https://github.com/devrazdev/ScrapeMe/raw/master/misc/demo.gif)
 
 ### Yet another tool? ###
 > ["Tools and frameworks come and go. Choose the one that fits the job."]
@@ -25,24 +25,24 @@ Scraping tools exist for almost [every programming language], but there is still
 2. [David Heaton's "Scraper"](https://chrome.google.com/webstore/detail/scraper/mbigbapnjcgaffohmbkdlecaccepngjd) on [GitHub](https://github.com/mnmldave/scraper)
 3. [Helena](http://helena-lang.org/) project by Berkley university on [GitHub](<https://github.com/schasins/helena>)
 
-However, these extensions can perform complex data extractions only if their cores are modified, whereas **ntScraper** does not require any core modification for these tasks. 
+However, these extensions can perform complex data extractions only if their cores are modified, whereas **ScrapeMe** does not require any core modification for these tasks. 
 
-I have used **ntScraper** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram).
+I have used **ScrapeMe** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram).
 
 ["Tools and frameworks come and go. Choose the one that fits the job."]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
 [any programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
-Below are examples of scraping tasks completed using **ntScraper**. Download **ntScraper** to work through the examples. It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ntScraper**.
+Below are examples of scraping tasks completed using **ScrapeMe**. Download **ScrapeMe** to work through the examples. It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ScrapeMe**.
 
-### Example of a problem solved with ntScraper (easy) ###
+### Example of a problem solved with ScrapeMe (easy) ###
 Task: Extract the names of Telegram channels from the [tlgrm.ru] catalog. 
 
 Background: The list of channels is partially loaded by default. Fully loading the list requires scrolling all the way down until new channels stop loading, like in Instagram. Once all the channels are loaded, their names can be easily scraped.
 
 Actions (assuming the scraping script is ready): 
 - Step 1: Import the list of URLs (may be collected manually)
-- Step 2: Start ntScraper and add scraping threads
+- Step 2: Start ScrapeMe and add scraping threads
 - Step 3: Export the results
 
 Result: A list of the channel names and their IDs.
@@ -51,7 +51,7 @@ Result: A list of the channel names and their IDs.
 
 
 
-### Example of a problem solved with ntScraper (hard) ###
+### Example of a problem solved with ScrapeMe (hard) ###
 
 Task: Extract the creation dates of Telegram channels.
 
@@ -59,7 +59,7 @@ Background: The creation dates can be found in the first messages of the channel
 
 Actions:	
 - Step 1: Import the list of channel IDs (can be taken from the first example)
-- Step 2: Start the ntScraper
+- Step 2: Start the ScrapeMe
 - Step 3: Export the results
 
 Result: A list of channel names and their creation dates
@@ -70,7 +70,7 @@ Result: A list of channel names and their creation dates
 
 
 ### Short lesson on jQuery selectors ###
-jQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools like **ntScraper**. Below is an example of how to successfully complete a scraping task with **ntScraper** using jQuery selectors.
+jQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools like **ScrapeMe**. Below is an example of how to successfully complete a scraping task with **ScrapeMe** using jQuery selectors.
 
 **Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
 
@@ -125,9 +125,9 @@ You can select all price badges with jQuery like this:
 ## Developer's corner ##
 
 ### How to ### 
-- [Install ntScraper](https://www.google.com/search?q=chrome+install+unpacked+extension)
+- [Install ScrapeMe](https://www.google.com/search?q=chrome+install+unpacked+extension)
 
-### How to add a task to ntScraper ###
+### How to add a task to ScrapeMe ###
 1. Create a name for the task. "myTask" is the name used for this example.
 
 2. Create a button to run the task by pasting a piece of HTML to [/control-panel/index.html]:
@@ -139,7 +139,7 @@ You can select all price badges with jQuery like this:
         </ul>
 </div>
 ```
-[/control-panel/index.html]: <https://github.com/devrazdev/ntScraper/blob/master/control-panel/index.html>
+[/control-panel/index.html]: <https://github.com/devrazdev/ScrapeMe/blob/master/control-panel/index.html>
 
 3. Add the name of the task to *taskNames* in [/tasks/tasks.js]
 ```javascript
@@ -147,7 +147,7 @@ var taskNames = ["...",
                  "...",
                  "myTask"];
 ```
-[/tasks/tasks.js]:<https://github.com/devrazdev/ntScraper/blob/master/tasks/tasks.js>
+[/tasks/tasks.js]:<https://github.com/devrazdev/ScrapeMe/blob/master/tasks/tasks.js>
 
 4. Copy and paste this JavaScript code into the *taskManager* function to describe the task in [/tasks/tasks.js].
 ```javascript
@@ -157,7 +157,7 @@ case "myTask":
             	break;
 ```
 
-5.  Create a "myTask.js" file in the "/scripts/" folder. Copy and paste this JavaScript code into the newly created "myTask.js" file. This code has the minimum required content **ntScraper** needs to successfully scrape the data.
+5.  Create a "myTask.js" file in the "/scripts/" folder. Copy and paste this JavaScript code into the newly created "myTask.js" file. This code has the minimum required content **ScrapeMe** needs to successfully scrape the data.
 ```javascript
 function myTask() {
     var myData = new Object();
@@ -174,7 +174,7 @@ function myTask() {
     return myData;
 }
 ```
-Assuming the third step was completed correctly, the *myTask* function will run once https://mysite.com/page/1 loads. *myData* is used to save the structured content of the scraped page. The **ntScraper** controller requires the *taskId*, *pageUrl*, and *timestamp* variables to manage the scraped data. If these variables are missing, the scraped data cannot be exported.
+Assuming the third step was completed correctly, the *myTask* function will run once https://mysite.com/page/1 loads. *myData* is used to save the structured content of the scraped page. The **ScrapeMe** controller requires the *taskId*, *pageUrl*, and *timestamp* variables to manage the scraped data. If these variables are missing, the scraped data cannot be exported.
 
 6. Add "myTask.js" to the list of content scripts in [manifest.json]
 ```json
@@ -188,15 +188,15 @@ Assuming the third step was completed correctly, the *myTask* function will run 
 	...
     }],
 ``` 
-[manifest.json]:<https://github.com/devrazdev/ntScraper/blob/master/manifest.json>
+[manifest.json]:<https://github.com/devrazdev/ScrapeMe/blob/master/manifest.json>
 
-7. Reload the extension, and try to run the task. When you click the "My task name" button in the **ntScraper** control panel, your browser should open a new window and load https://mysite.com/page/1. The *myTask()* function will run in the background, and then the window will close. **ntScraper** will add a data point to its cache, which you can see by clicking "Show scraping cache" on the export page.
+7. Reload the extension, and try to run the task. When you click the "My task name" button in the **ScrapeMe** control panel, your browser should open a new window and load https://mysite.com/page/1. The *myTask()* function will run in the background, and then the window will close. **ScrapeMe** will add a data point to its cache, which you can see by clicking "Show scraping cache" on the export page.
 
-To debug the scraper, check the logs in the console of **ntScraper**'s background page and in the console of the scraped page itself.
+To debug the scraper, check the logs in the console of **ScrapeMe**'s background page and in the console of the scraped page itself.
 
 ## Farewell ##
-I would be happy to hear any feedback/news about how you use **ntScraper** in real life. Feel free to email me at devrazdev@gmail.com. Thank you.
+I would be happy to hear any feedback/news about how you use **ScrapeMe** in real life. Feel free to email me at devrazdev@gmail.com. Thank you.
 
 ### P.S. ###
 Please never try to [automate Internet Explorer by writing VBA macroses in Microsoft Excel].
-
+[automate Internet Explorer by writing VBA macroses in Microsoft Excel]: <https://www.youtube.com/watch?v=q7aa76YFFW8>
