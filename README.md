@@ -72,7 +72,7 @@ Result: A list of channel names and their creation dates
 ### Short lesson on jQuery selectors ###
 jQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools like **ScrapeMe**. Below is an example of how to successfully complete a scraping task with **ScrapeMe** using jQuery selectors.
 
-**Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
+** Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
 
 1. Open the page in a browser, right-click any price badge, and select “Inspect.” The HTML for each price badge is displayed in a single row like this:
 
@@ -83,40 +83,50 @@ jQuery selectors work well as long as the data that will be scraped is on a sing
 You can select all price badges with jQuery like this:
 
 ```javascript
-	$(“span.result-rom”)
+	$(“span.result-price”)
 ```
 
 
 2. Notice that the "local" results are displayed above the results from "nearby areas."
-	a. Right-click on any word in the bolded sentences "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search," and select "Inspect." This is the HTML that will result:
-    ```html
-    <h4 class="ban nearby">
-        <span class="bantext">Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search.</span>
-    </h4>
-    ```
-    	b. The jQuery selector for "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search" is:
+
+a. Right-click on any word in the bolded sentences "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search," and select "Inspect." This is the HTML that will result:
+
+```html
+	<h4 class="ban nearby">
+		<span class="bantext">Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search.</span>
+	</h4>
+```
+
+b. The jQuery selector for "Few local results found. Here are some from nearby areas. Checking 'include nearby areas' will expand your search" is
+
 ```javascript
-    	$("h4.ban.nearby")
+	$("h4.ban.nearby")
 ```
 3. Enter the JavaScript console to complete the following 3 tasks:
-	a. Copy and paste this JavaScript code into the console to import jQuery
-    ```javascript
+
+a. Copy and paste this JavaScript code into the console to import jQuery
+
+```javascript
 	var jq = document.createElement('script');
 	jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js";
 	document.getElementsByTagName('head')[0].appendChild(jq);
-    ```
-    	b. Copy and paste this Javascript code into the console to prevent possible conflicts with other JavaScript libraries
-    ```javascript
-    var jq = $.noConflict();
-    ```
-    	c. Copy and paste this JavaScript code into the console to calculate the average price of the motorcycles
-    ```javascript
-    var sum = 0
-    jq("h4.ban.nearby").prevAll().each(function(){
-    	sum += parseInt($(this).find("span.result-price:eq(0)").text().replace("$","")); 
-    });
-    console.log(Math.round(sum / jq("h4.ban.nearby").prevAll().length));
-    ``` 
+```
+
+b. Copy and paste this Javascript code into the console to prevent possible conflicts with other JavaScript libraries
+
+```javascript
+	var jq = $.noConflict();
+```
+
+c. Copy and paste this JavaScript code into the console to calculate the average price of the motorcycles
+   
+```javascript
+	var sum = 0
+	jq("h4.ban.nearby").prevAll().each(function(){
+		sum += parseInt($(this).find("span.result-price:eq(0)").text().replace("$","")); 
+	});
+    	console.log(Math.round(sum / jq("h4.ban.nearby").prevAll().length));
+``` 
 
 [craigslist page with used Triumph motorcycles]: <https://sfbay.craigslist.org/search/mca?query=triumph&sort=rel&srchType=T&hasPic=1&condition=30&condition=40>
 
@@ -199,4 +209,5 @@ I would be happy to hear any feedback/news about how you use **ScrapeMe** in rea
 
 ### P.S. ###
 Please never try to [automate Internet Explorer by writing VBA macroses in Microsoft Excel].
+
 [automate Internet Explorer by writing VBA macroses in Microsoft Excel]: <https://www.youtube.com/watch?v=q7aa76YFFW8>
