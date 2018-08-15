@@ -44,7 +44,7 @@ Task: Extract the names of Telegram channels from the [tlgrm.ru] catalog.
 
 Background: The list of channels is partially loaded by default. Fully loading the list requires scrolling all the way down until new channels stop loading, like in Instagram. Once all the channels are loaded, their names can be easily scraped.
 
-Actions (assuming the scraping script is ready): 
+Actions: 
 - Step 1: Import the list of URLs (may be collected manually)
 - Step 2: Start ScrapeMe and add scraping threads
 - Step 3: Export the results
