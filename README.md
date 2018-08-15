@@ -72,7 +72,7 @@ Result: A list of channel names and their creation dates
 ### Short lesson on jQuery selectors ###
 jQuery selectors work well as long as the data that will be scraped is on a single page. Tasks of any higher complexity (e.g. pagination, dynamic pages, CAPTCHA, searching with parameters) are more quickly solved with scraping tools like **ScrapeMe**. Below is an example of how to successfully complete a scraping task with **ScrapeMe** using jQuery selectors.
 
-** Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price **
+**Example: Look at the [Craigslist page with used Triumph motorcycles] and determine their average price**
 
 1. Open the page in a browser, right-click any price badge, and select “Inspect.” The HTML for each price badge is displayed in a single row like this:
 
