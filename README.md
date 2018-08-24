@@ -34,7 +34,7 @@ However, these extensions can perform complex data extractions only if their cor
 I have used **ScrapeMe** to successfully scrape data from major social networking websites (e.g. Facebook, LinkedIn) and several different web applications (e.g. JIRA, Telegram).
 
 ["Tools and frameworks come and go. Choose the one that fits the job."]: <https://circabc.europa.eu/sd/a/20d545f1-6c94-4077-9c5b-1b2178be13a1/2_Big%20Data%20Sources%20part3-Day%201-B%20Tools.pptx>
-[any programming language]: <https://github.com/BruceDone/awesome-crawler>
+[every programming language]: <https://github.com/BruceDone/awesome-crawler>
 [huge number]: <https://github.com/lorien/awesome-web-scraping/blob/master/javascript.md>
 
 Below are examples of scraping tasks completed using **ScrapeMe**. Download **ScrapeMe** to work through the examples. It is important to mention that a solid understanding of JavaScript is required to maximize the utility of **ScrapeMe**.
